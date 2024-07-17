@@ -1,0 +1,6 @@
+public with sharing class GoogleAccountMapController {
+    @AuraEnabled(cacheable=true)
+    public static List<Account> getAccounts() {
+        return [SELECT Id, Name, BillingStreet, BillingCity, BillingState, BillingPostalCode, BillingCountry FROM Account where BillingPostalCode != null];
+    }
+}
